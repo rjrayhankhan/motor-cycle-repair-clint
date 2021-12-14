@@ -1,6 +1,7 @@
 import React from 'react';
 import { faTools, faMotorcycle, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import ServesInfo from './ServesInfo';
+import { Button } from 'react-bootstrap';
 
 
 const information = [
@@ -40,6 +41,9 @@ const Services = () => {
                  {
                      information.map(info => <ServesInfo data={info} key={info.id}></ServesInfo>)
                  }
+            </div>
+            <div style={{textAlign: "center"}}>
+                <Button>Explore more</Button>
             </div>
         </div>
     );
