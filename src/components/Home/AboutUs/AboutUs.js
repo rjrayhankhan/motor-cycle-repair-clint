@@ -7,7 +7,7 @@ const AboutUs = () => {
     
     const styleSheet = {
         width: "257px",
-        margin: "200px 0 0 313px",
+        margin: "220px 0 0 313px",
         border: "15px solid white",
         borderBottom: "0"
     }

@@ -32,18 +32,20 @@ const information = [
 
 const Services = () => {
     return (
-        <div className="container">
-            <div className="serves-header text-center">
-                <h5><u>Our Services</u></h5>
-                <h2 className="mb-5" style={{fontWeight: 'bold'}}>We Provide <br /> Best Custom Motorcycle</h2>
-            </div>
-            <div className="serves-info row">
-                 {
-                     information.map(info => <ServesInfo data={info} key={info.id}></ServesInfo>)
-                 }
-            </div>
-            <div style={{textAlign: "center"}}>
-                <Button>Explore more</Button>
+        <div style={{backgroundColor: 'rgb(238, 238, 238)'}}>
+            <div className="container py-5">
+                <div className="serves-header text-center mt-5">
+                    <h5><u>Our Services</u></h5>
+                    <h2 className="mb-5" style={{ fontWeight: 'bold' }}>We Provide <br /> Best Custom Motorcycle</h2>
+                </div>
+                <div className="serves-info row">
+                    {
+                        information.map(info => <ServesInfo data={info} key={info.id}></ServesInfo>)
+                    }
+                </div>
+                <div className="mb-5" style={{ textAlign: "center" }}>
+                    <Button>Explore more</Button>
+                </div>
             </div>
         </div>
     );

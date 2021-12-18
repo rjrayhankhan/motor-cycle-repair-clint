@@ -30,7 +30,7 @@ const feedback = [
 
 const Testimonials = () => {
     return (
-        <div className="pb-5" style={{ backgroundColor: "lightgrey", marginTop: "100px"}}>
+        <div className="pb-5" style={{ backgroundColor: "rgb(238, 238, 238)"}}>
             <div className="container" style={{ paddingTop: "100px"}}>
                 <h4 className="text-center mb-5"><b>Testimonials</b></h4>
                 <div className="row mt-5">
