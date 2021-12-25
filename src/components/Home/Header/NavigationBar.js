@@ -1,9 +1,11 @@
 import React from 'react';
-import './Navigation.css'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import logo from '../../../images/logo.jpg'
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import logo from '../../../images/logo.jpg';
 
-const Navigation = () => {
+
+const NavigationBar = () => {
+
+
     return (
         <>
             <Navbar className="Navigation" collapseOnSelect expand="lg" bg="black" variant="dark">
@@ -21,7 +23,7 @@ const Navigation = () => {
                             <Nav.Link href="/contact">Contact</Nav.Link>
                             <Nav.Link href="/aboutUs">About Us</Nav.Link>
                             <Nav.Link href="/admin">Admin</Nav.Link>
-                            <Button className="btn btn-primary mx-5 px-4">Login</Button>
+                            <Nav.Link href="/login" className="btn btn-primary mx-5 px-4 text-white">Login</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -30,4 +32,4 @@ const Navigation = () => {
     );
 };
 
-export default Navigation;
+export default NavigationBar;

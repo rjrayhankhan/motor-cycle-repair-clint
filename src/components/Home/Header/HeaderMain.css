@@ -6,10 +6,10 @@
 }
 
 .header-main::after {
-    height:720px;
+    height: 637px;
     content:' ';
     position: absolute;
-    top: 0;
+    top: 83px;
     width: 100%;
     right: 0;
     background-color: rgb(78, 76, 76);

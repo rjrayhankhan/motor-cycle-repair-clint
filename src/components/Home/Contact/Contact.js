@@ -1,6 +1,8 @@
 import React from 'react';
 import './Contact.css';
 import { useForm } from "react-hook-form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faClock, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const Contact = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -35,7 +37,7 @@ const Contact = () => {
                         <input placeholder='Email Address' type="email" className="input-field" {...register("emailAddress", { required: true })} />
                         {errors.emailAddress && <span className="text-danger">This field is required</span>}
 
-                        <textarea placeholder="Type Your Message" type="text" className="input-field" {...register("description", { required: true })} />
+                        <textarea placeholder="Write something.." type="text" className="input-field" {...register("description", { required: true })} />
                         {errors.description && <span className="text-danger">This field is required</span>}
                         <br />
 
@@ -49,21 +51,21 @@ const Contact = () => {
                     <div className="row">
                         <div className="col-6">
                             <div className="location contact-info">
-                                <h4 className="title"><b>Location</b></h4>
+                                <h4 className="title"><b><FontAwesomeIcon icon={faMapMarkerAlt}/> Location</b></h4>
                                 <small>151 Kalshi Rd - 112, Dhaka 1216,</small>
                             </div>
                             <div className="email contact-info">
-                                <h4 className="title"><b>Email</b></h4>
+                                <h4 className="title"><b><FontAwesomeIcon icon={faEnvelope}/> Email</b></h4>
                                 <small>motorcycle@gmail.com</small>
                             </div>
                         </div>
                         <div className="col-6">
                             <div className="opening contact-info">
-                                <h4 className="title"><b>Opening</b></h4>
+                                <h4 className="title"><b><FontAwesomeIcon icon={faClock}/> Opening</b></h4>
                                 <small>Mon-Sat 08:00am - 20:00pm</small>
                             </div>
                             <div className="phone contact-info">
-                                <h4 className="title"><b>Phone</b></h4>
+                                <h4 className="title"><b><FontAwesomeIcon icon={faPhone}/> Phone</b></h4>
                                 <small>(+880) 1235-456780</small>
                             </div>
                         </div>
