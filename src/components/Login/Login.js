@@ -27,8 +27,8 @@ const Login = () => {
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
-                const { displayName, email } = result.user;
-                const signInUser = {name: displayName, email};
+                const { displayName, photoURL, email } = result.user;
+                const signInUser = {name: displayName, image: photoURL, email};
                 setLoggedInUser(signInUser);
                 sessionStorage.setItem('token', token);
                 navigate(from);

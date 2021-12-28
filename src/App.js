@@ -7,6 +7,9 @@ import ServesCenter from "./components/Home/ServesCenter/ServesCenter";
 import NavigationBar from "./components/Home/Header/NavigationBar";
 import NotFound from "./components/NotFound/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import YourServes from "./components/YourServes/YourServes/YourServes";
+import ServesList from "./components/YourServes/ServesList/ServesList";
+import Review from "./components/YourServes/Review/Review";
 
 
 
@@ -25,12 +28,18 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          {/* <PrivateRoute path="/servesCenter" component={<ServesCenter />} /> */}
            <Route path="/servesCenter" element={
            <PrivateRoute>
               <ServesCenter/>
            </PrivateRoute>
           }/>
+           <Route path="/serves" element={
+           <PrivateRoute>
+              <YourServes/>
+           </PrivateRoute>
+          }/>
+           <Route path="/servesList" element={ <ServesList/> }/>
+           <Route path="/review" element={ <Review/> }/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

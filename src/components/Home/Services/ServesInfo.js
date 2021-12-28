@@ -1,10 +1,16 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 
 
 const ServesInfo = (props) => {
     const {icon, name, description, price} = props.data;
+
+    let navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/serves')
+    }
     
     return (
         <div className="col-md-4 mb-5">
@@ -15,7 +21,7 @@ const ServesInfo = (props) => {
                         <Card.Text style={{fontSize: "13px", padding: "10px"}}>{description}</Card.Text>
                         <Card.Text style={{fontSize: "26px", padding: "5px", fontWeight: "bold"}}>$ {price}</Card.Text>
                     </Card.Body>
-                    <Button>see more</Button>
+                    <Button onClick={handleClick}>Buy Now</Button>
              </Card>
         </div>
     );

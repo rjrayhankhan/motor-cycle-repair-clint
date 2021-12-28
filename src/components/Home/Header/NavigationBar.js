@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../../images/logo.jpg';
+import { UserContext } from '../../../App';
 
 
 const NavigationBar = () => {
-
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext); 
+    const token = sessionStorage.getItem("token");
 
     return (
         <>
@@ -18,12 +20,15 @@ const NavigationBar = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/servesCenter">Serves Center</Nav.Link>
-                            <Nav.Link href="/services">Services</Nav.Link>
+                            <Nav.Link href="/yourServes">YourServices</Nav.Link>
+                            <Nav.Link href="/serves">Services</Nav.Link>
                             <Nav.Link href="/contact">Contact</Nav.Link>
-                            <Nav.Link href="/aboutUs">About Us</Nav.Link>
                             <Nav.Link href="/admin">Admin</Nav.Link>
-                            <Nav.Link href="/login" className="btn btn-primary mx-5 px-4 text-white">Login</Nav.Link>
+                            {
+                                loggedInUser.email || token
+                                ? <div><img style={{width: '50px', height: '50px', borderRadius:'50%', marginLeft: '10px'}} src={loggedInUser.image} alt="" /></div>
+                                : <Nav.Link href="/login" className="btn btn-primary mx-5 px-4 text-white">Login</Nav.Link>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
