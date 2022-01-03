@@ -5,7 +5,21 @@ import { useForm } from "react-hook-form";
 
 const Review = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+
+   fetch('http://localhost:5000/addReview', {
+       method: 'POST',
+       headers: { 'content-Type': 'application/json'},
+       body: JSON.stringify(data)
+   })
+   .then(result => {
+       if(result){
+         alert('Review created successfully.');
+       }
+       else{ alert('something is wrong please try agin.'); }
+   })
+
+ }
 
     console.log(watch("example")); // watch input value by passing the name of it
 
@@ -35,7 +49,7 @@ const Review = () => {
                     <div className="formBody" style={{ backgroundColor: 'rgb(232, 249, 255)', height: '400px', padding: '20px' }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            <input placeholder='Your Name' type="text" className="input-field" {...register("yourName", { required: true })} />
+                            <input placeholder='Your Name' type="text" className="input-field" {...register("name", { required: true })} />
                             {errors.phoneNumber && <span className="text-danger">This field is required</span>}
                             <br />
                             <input placeholder="Company's name, Designation" type="text" className="input-field" {...register("company", { required: true })} />

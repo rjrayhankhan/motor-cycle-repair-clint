@@ -10,6 +10,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import YourServes from "./components/YourServes/YourServes/YourServes";
 import ServesList from "./components/YourServes/ServesList/ServesList";
 import Review from "./components/YourServes/Review/Review";
+import Services from "./components/Home/Services/Services";
 
 
 
@@ -28,16 +29,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-           <Route path="/servesCenter" element={
-           <PrivateRoute>
-              <ServesCenter/>
-           </PrivateRoute>
-          }/>
-           <Route path="/serves" element={
-           <PrivateRoute>
-              <YourServes/>
-           </PrivateRoute>
-          }/>
+           <Route path="/services" element={ <Services/> }/>
+           <Route path="/yourServes" element={ <YourServes/> }/>
            <Route path="/servesList" element={ <ServesList/> }/>
            <Route path="/review" element={ <Review/> }/>
           <Route path="*" element={<NotFound />} />

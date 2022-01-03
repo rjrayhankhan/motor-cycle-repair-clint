@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 
 const TestimonialsCard = (props) => {
-    const { name, position, description, img } = props.data;
+    const { name, company, description, img } = props.data;
 
     const styleSheet = {
         display: 'flex',
@@ -16,7 +16,7 @@ const TestimonialsCard = (props) => {
                         <img style={{width: "50px", height: "50px", borderRadius: "50%", margin: "15px"}} src={img} alt="" />
                         <div>
                             <Card.Title style={{ fontWeight: "bold", fontSize: "18px", marginTop: "20px", marginBottom: "0" }}>{name}</Card.Title>
-                            <Card.Text style={{ fontSize: "13px", paddingBottom: "10px" }}>{position}</Card.Text>
+                            <Card.Text style={{ fontSize: "13px", paddingBottom: "10px" }}>{company}</Card.Text>
                         </div>
                     </div>
                     <Card.Text style={{ fontSize: "13px", padding: "10px" }}>{description}</Card.Text>

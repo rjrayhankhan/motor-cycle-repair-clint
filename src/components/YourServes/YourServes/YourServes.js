@@ -33,13 +33,13 @@ const YourServes = () => {
                     <div className="formBody" style={{ backgroundColor: 'rgb(232, 249, 255)', height: '400px', padding: '20px' }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            <input readonly value='Your Name' type="text" className="input-field" {...register("yourName", { required: true })} />
+                            <input readOnly value='Your Name' type="text" className="input-field" {...register("yourName", { required: true })} />
                             {errors.phoneNumber && <span className="text-danger">This field is required</span>}
                             <br />
-                            <input readonly value="Company's name, Designation" type="text" className="input-field" {...register("company", { required: true })} />
+                            <input readOnly value="Company's name, Designation" type="text" className="input-field" {...register("company", { required: true })} />
                             {errors.emailAddress && <span className="text-danger">This field is required</span>}
                             <br />
-                            <input readonly value="Description" type="text" className="input-field" {...register("description", { required: true })} />
+                            <input readOnly value="Description" type="text" className="input-field" {...register("description", { required: true })} />
                             {errors.description && <span className="text-danger">This field is required</span>}
                             <br />
                         </form>

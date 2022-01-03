@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../App';
+
 
 
 const ServesInfo = (props) => {
     const {icon, name, description, price} = props.data;
+    const [ loggedInUser, setLoggedInUser ] = useContext(UserContext);
+
+    const servesData = {
+        "name": loggedInUser.name,
+        "email": loggedInUser.email,
+        "servesName": name,
+        "price": price
+    };
 
     let navigate = useNavigate();
-    const handleClick = () => {
-        navigate('/serves')
+    const handleClick = (data) => {
+        navigate('/services');
+        console.log(data)
     }
     
     return (
@@ -21,7 +32,7 @@ const ServesInfo = (props) => {
                         <Card.Text style={{fontSize: "13px", padding: "10px"}}>{description}</Card.Text>
                         <Card.Text style={{fontSize: "26px", padding: "5px", fontWeight: "bold"}}>$ {price}</Card.Text>
                     </Card.Body>
-                    <Button onClick={handleClick}>Buy Now</Button>
+                    <Button onClick={() => handleClick(servesData)}>Buy Now</Button>
              </Card>
         </div>
     );

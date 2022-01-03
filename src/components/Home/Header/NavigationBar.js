@@ -21,7 +21,7 @@ const NavigationBar = () => {
                         <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/yourServes">YourServices</Nav.Link>
-                            <Nav.Link href="/serves">Services</Nav.Link>
+                            <Nav.Link href="/services">Services</Nav.Link>
                             <Nav.Link href="/contact">Contact</Nav.Link>
                             <Nav.Link href="/admin">Admin</Nav.Link>
                             {
