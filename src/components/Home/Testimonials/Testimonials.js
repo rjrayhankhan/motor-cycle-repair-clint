@@ -5,7 +5,6 @@ import TestimonialsCard from './TestimonialsCard';
 
 const Testimonials = () => {
     const [reviewData, setReviewData] = useState([]);
-    console.log(reviewData);
 
     useEffect(() => {
         const url = 'http://localhost:5000/getReview';

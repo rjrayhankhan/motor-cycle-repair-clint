@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../App';
 
 
 
 const ServesInfo = (props) => {
     const {icon, name, description, price} = props.data;
-    const [ loggedInUser, setLoggedInUser ] = useContext(UserContext);
+    const handleClick = props.handleClick;
+    const { value2 } = useContext(UserContext);
+    const [ loggedInUser, setLoggedInUser ] = value2;
 
     const servesData = {
         "name": loggedInUser.name,
@@ -17,12 +18,9 @@ const ServesInfo = (props) => {
         "price": price
     };
 
-    let navigate = useNavigate();
-    const handleClick = (data) => {
-        navigate('/services');
-        console.log(data)
-    }
     
+
+
     return (
         <div className="col-md-4 mb-5">
             <Card style={{ width: '18rem', boxShadow: '5px 5px 10px lightgrey', marginLeft: "35px"}} >

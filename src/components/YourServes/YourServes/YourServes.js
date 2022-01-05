@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './YourServes.css'
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { UserContext } from "../../../App"
 
 const YourServes = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { value1 } = useContext(UserContext);
+    const [ allData, setAllData ] = value1;
+    const { name, email, servesName } = allData;
+
+    
     const onSubmit = data => console.log(data);
 
-    console.log(watch("example")); // watch input value by passing the name of it
+    // console.log(watch("example")); // watch input value by passing the name of it
 
     const styleSheet = {
         backgroundColor: 'white',
@@ -33,13 +39,13 @@ const YourServes = () => {
                     <div className="formBody" style={{ backgroundColor: 'rgb(232, 249, 255)', height: '400px', padding: '20px' }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            <input readOnly value='Your Name' type="text" className="input-field" {...register("yourName", { required: true })} />
+                            <input readOnly value={name} type="text" className="input-field" {...register("yourName", { required: true })} />
                             {errors.phoneNumber && <span className="text-danger">This field is required</span>}
                             <br />
-                            <input readOnly value="Company's name, Designation" type="text" className="input-field" {...register("company", { required: true })} />
+                            <input readOnly value={email} type="text" className="input-field" {...register("company", { required: true })} />
                             {errors.emailAddress && <span className="text-danger">This field is required</span>}
                             <br />
-                            <input readOnly value="Description" type="text" className="input-field" {...register("description", { required: true })} />
+                            <input readOnly value={servesName} type="text" className="input-field" {...register("description", { required: true })} />
                             {errors.description && <span className="text-danger">This field is required</span>}
                             <br />
                         </form>

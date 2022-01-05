@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { faTools, faMotorcycle, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import ServesInfo from './ServesInfo';
 import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../App'
 
 
 const information = [
@@ -30,7 +32,18 @@ const information = [
 ]
 
 
+
 const Services = () => {
+    const { value1 } = useContext(UserContext);
+    const [allData, setAllData] = value1;
+    console.log(allData)
+
+    let navigate = useNavigate();
+    const handleClick = (data) => {
+        navigate('/yourServes');
+        setAllData(data);
+    }
+    
     return (
         <div style={{backgroundColor: 'rgb(238, 238, 238)'}}>
             <div className="container py-5">
@@ -40,7 +53,7 @@ const Services = () => {
                 </div>
                 <div className="serves-info row">
                     {
-                        information.map(info => <ServesInfo data={info} key={info.id}></ServesInfo>)
+                        information.map(info => <ServesInfo data={info} key={info.id} handleClick={handleClick}/>)
                     }
                 </div>
                 <div className="mb-5" style={{ textAlign: "center" }}>

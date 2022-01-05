@@ -5,7 +5,8 @@ import { UserContext } from '../../../App';
 
 
 const NavigationBar = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext); 
+    const { value2 } = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = value2; 
     const token = sessionStorage.getItem("token");
 
     return (

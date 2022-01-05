@@ -12,8 +12,8 @@ import { UserContext } from '../../App';
 initializeApp(firebaseConfig);
 
 const Login = () => {
-
-    const [ loggedInUser, setLoggedInUser ] = useContext(UserContext);
+    const { value2 } = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = value2;
     const navigate = useNavigate();
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
@@ -28,10 +28,23 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const { displayName, photoURL, email } = result.user;
-                const signInUser = {name: displayName, image: photoURL, email};
+                const signInUser = { name: displayName, image: photoURL, email };
                 setLoggedInUser(signInUser);
                 sessionStorage.setItem('token', token);
                 navigate(from);
+
+
+                fetch('http://localhost:5000/addUser', {
+                    method: 'POST',
+                    headers: { 'content-Type': 'application/json' },
+                    body: JSON.stringify(signInUser)
+                })
+                    .then(result => {
+                        if (result) {
+                            alert('Complete Login successfully.');
+                        }
+                        else { alert('something is wrong please try agin.'); }
+                    })
 
             })
             .catch((error) => {
@@ -40,6 +53,7 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 console.log(errorCode, errorMessage, credential);
             });
+
     }
 
 
