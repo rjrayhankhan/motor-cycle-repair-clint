@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './YourServes.css'
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
@@ -8,8 +8,19 @@ const YourServes = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { value1 } = useContext(UserContext);
     const [ allData, setAllData ] = value1;
-    const { name, email, servesName } = allData;
+    // const [ loginData, setLoginData ] = useState();
+    // const { name, email } = loginData;
+    // console.log(email, name);
+    const {name, email, servesName } = allData;
+    // const token = sessionStorage.getItem("token");
+    
 
+
+        // useEffect(() => {
+        //     fetch(`http://localhost:5000/getUser/`+ token)
+        //     .then(res => res.json())
+        //     .then(data => setLoginData(data[0]))
+        // }, [token])
     
     const onSubmit = data => console.log(data);
 

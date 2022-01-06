@@ -22,7 +22,6 @@ function App() {
 
   const [loggedInUser, setLoggedInUser] = useState({});
   const [allData, setAllData] = useState({});
-  console.log(allData)
 
   return (
     <UserContext.Provider value={{value1: [allData, setAllData], value2: [loggedInUser, setLoggedInUser]}}>

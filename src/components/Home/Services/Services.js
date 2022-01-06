@@ -36,14 +36,18 @@ const information = [
 const Services = () => {
     const { value1 } = useContext(UserContext);
     const [allData, setAllData] = value1;
-    console.log(allData)
+    const token = sessionStorage.getItem("token");
 
     let navigate = useNavigate();
     const handleClick = (data) => {
         navigate('/yourServes');
         setAllData(data);
+
+        fetch(`http://localhost:5000/getUser/`+ token)
+            .then(res => res.json())
+            .then(userData => setAllData(userData[0]))
     }
-    
+
     return (
         <div style={{backgroundColor: 'rgb(238, 238, 238)'}}>
             <div className="container py-5">

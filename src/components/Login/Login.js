@@ -28,7 +28,7 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const { displayName, photoURL, email } = result.user;
-                const signInUser = { name: displayName, image: photoURL, email };
+                const signInUser = { name: displayName, image: photoURL, email, token};
                 setLoggedInUser(signInUser);
                 sessionStorage.setItem('token', token);
                 navigate(from);
@@ -44,7 +44,7 @@ const Login = () => {
                             alert('Complete Login successfully.');
                         }
                         else { alert('something is wrong please try agin.'); }
-                    })
+                    });
 
             })
             .catch((error) => {
