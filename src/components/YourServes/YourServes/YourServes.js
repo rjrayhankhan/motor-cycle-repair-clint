@@ -5,26 +5,40 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../../../App"
 
 const YourServes = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { value1 } = useContext(UserContext);
     const [ allData, setAllData ] = value1;
-    // const [ loginData, setLoginData ] = useState();
-    // const { name, email } = loginData;
-    // console.log(email, name);
-    const {name, email, servesName } = allData;
-    // const token = sessionStorage.getItem("token");
+    const {name, email, servesName, description, price } = allData;
+
+    const onSubmit = data => {
+
+        // fetch('http://localhost:5000/service', {
+        //     method: 'POST',
+        //     headers: { 'content-Type': 'application/json'},
+        //     body: JSON.stringify(data)
+        // })
+        // .then(result => {
+        //     if(result){
+        //         alert('Review created successfully.');
+        //       }
+        //       else{ alert('something is wrong please try agin.'); }
+        // })
+
+        fetch("http://localhost:5000/service", {
+            method: "POST",
+            headers: { "content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+            .then(res => {
+                if (res) {
+                    alert('Review created successfully.');
+                }
+                else { alert('something is wrong please try agin.'); }
+            })
+    };
+
     
-
-
-        // useEffect(() => {
-        //     fetch(`http://localhost:5000/getUser/`+ token)
-        //     .then(res => res.json())
-        //     .then(data => setLoginData(data[0]))
-        // }, [token])
-    
-    const onSubmit = data => console.log(data);
-
-    // console.log(watch("example")); // watch input value by passing the name of it
+    console.log(watch("example")); // watch input value by passing the name of it
 
     const styleSheet = {
         backgroundColor: 'white',
@@ -47,18 +61,25 @@ const YourServes = () => {
                     <div className="head" style={{margin: "15px 5px 15px 25px"}}>
                         <h4><b>Serves</b></h4>
                     </div>
-                    <div className="formBody" style={{ backgroundColor: 'rgb(232, 249, 255)', height: '400px', padding: '20px' }}>
+                    <div className="formBody" style={{ backgroundColor: 'rgb(232, 249, 255)', height: '510px', padding: '20px' }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            <input readOnly value={name} type="text" className="input-field" {...register("yourName", { required: true })} />
+                            <input readOnly value={name} type="text" className="input-field" {...register("name", { required: true })} />
                             {errors.phoneNumber && <span className="text-danger">This field is required</span>}
                             <br />
-                            <input readOnly value={email} type="text" className="input-field" {...register("company", { required: true })} />
+                            <input readOnly value={email} type="text" className="input-field" {...register("email", { required: true })} />
                             {errors.emailAddress && <span className="text-danger">This field is required</span>}
                             <br />
-                            <input readOnly value={servesName} type="text" className="input-field" {...register("description", { required: true })} />
+                            <input readOnly value={servesName} type="text" className="input-field" {...register("service", { required: true })} />
                             {errors.description && <span className="text-danger">This field is required</span>}
                             <br />
+                            <textarea readOnly value={description} type="text" className="input-field" {...register("description", { required: true })} />
+                            {errors.description && <span className="text-danger">This field is required</span>}
+                            <br />
+                            <input readOnly value={price} type="number" className="input-field" {...register("price", { required: true })} />
+                            {errors.description && <span className="text-danger">This field is required</span>}
+                            <br />
+                            <input className="input-field bg-primary text-white" type="submit" />
                         </form>
                     </div>
                 </div>

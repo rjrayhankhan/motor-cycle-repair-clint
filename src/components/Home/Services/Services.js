@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { faTools, faMotorcycle, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import ServesInfo from './ServesInfo';
 import { Button } from 'react-bootstrap';
@@ -40,8 +40,8 @@ const Services = () => {
 
     let navigate = useNavigate();
     const handleClick = (data) => {
-        navigate('/yourServes');
         setAllData(data);
+        navigate('/yourServes');
 
         fetch(`http://localhost:5000/getUser/`+ token)
             .then(res => res.json())

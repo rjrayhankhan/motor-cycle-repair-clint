@@ -15,7 +15,8 @@ const ServesInfo = (props) => {
         "name": loggedInUser.name,
         "email": loggedInUser.email,
         "servesName": name,
-        "price": price
+        "description": description,
+        "price": price,
     };
 
     

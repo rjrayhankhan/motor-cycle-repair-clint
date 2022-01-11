@@ -1,18 +1,24 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
-const ServesCard = () => {
+const ServesCard = (props) => {
+    const { name, service, description, email, price } = props.serviceInfo;
+
     return (
-        <Card style={{ width: '18rem', boxShadow: '5px 5px 10px lightgrey' }}>
+        <Card style={{ margin: "5px", width: '18rem', boxShadow: '5px 5px 10px lightgrey' }}>
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                </Card.Text>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
+                <div className="row">
+                    <div className="col-md-9">
+                        <Card.Title>{service}</Card.Title>
+                    </div>
+                    <div className="col-md-3">
+                        <Button>Done</Button>
+                    </div>
+                </div>
+                <Card.Subtitle className="mb-2 text-muted">{name}</Card.Subtitle>
+                <Card.Text>{email}</Card.Text>
+                <Card.Text>{description}</Card.Text>
+                <Card.Text className="mb-2 text-muted"><b>Price : ${price}</b></Card.Text>
             </Card.Body>
         </Card>
     );

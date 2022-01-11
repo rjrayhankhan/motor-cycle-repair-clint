@@ -37,7 +37,7 @@ const Contact = () => {
                         <input placeholder='Email Address' type="email" className="input-field" {...register("emailAddress", { required: true })} />
                         {errors.emailAddress && <span className="text-danger">This field is required</span>}
 
-                        <textarea placeholder="Write something.." type="text" className="input-field" {...register("description", { required: true })} />
+                        <textarea placeholder="Write something.." style={{border: "3px solid lightgrey"}}  type="text" className="input-field" {...register("description", { required: true })} />
                         {errors.description && <span className="text-danger">This field is required</span>}
                         <br />
 

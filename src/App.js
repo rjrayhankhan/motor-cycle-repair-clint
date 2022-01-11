@@ -11,6 +11,10 @@ import YourServes from "./components/YourServes/YourServes/YourServes";
 import ServesList from "./components/YourServes/ServesList/ServesList";
 import Review from "./components/YourServes/Review/Review";
 import Services from "./components/Home/Services/Services";
+import OrderList from "./components/Admin/OrderList/OrderList";
+import AddService from "./components/Admin/AddService";
+import MakeAdmin from "./components/Admin/MakeAdmin";
+import ManageService from "./components/Admin/ManageService";
 
 
 
@@ -34,6 +38,10 @@ function App() {
            <Route path="/yourServes" element={ <YourServes/> }/>
            <Route path="/servesList" element={ <ServesList/> }/>
            <Route path="/review" element={ <Review/> }/>
+           <Route path="/admin" element={ <OrderList/> }/>
+           <Route path="/addService" element={ <AddService/> }/>
+           <Route path="/makeAdmin" element={ <MakeAdmin/> }/>
+           <Route path="/manageService" element={ <ManageService/> }/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
