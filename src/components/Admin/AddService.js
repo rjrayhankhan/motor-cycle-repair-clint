@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 
 const AddService = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data)
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [file, setFile] = useState(null)
+
+    
+    const handleChange = (e) => {
+        const newFile = e.target.files[0]
+        setFile(newFile)
+    }
 
 
-    console.log(watch("example")); // watch input value by passing the name of it
+    const onSubmit = serviceInfo => {
+        const formData = new FormData()
+        formData.append('file', file);
+        formData.append('title', serviceInfo.title);
+        formData.append('price', serviceInfo.price);
+        formData.append('description', serviceInfo.description);
+      
+        fetch('https://quiet-temple-98612.herokuapp.com/addServices', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json()) 
+        .then(data => {
+            if (data) {
+                alert('Review created successfully.');
+                window.location.reload(false);
+            }
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    };
+
+
+    // console.log(watch("example")); // watch input value by passing the name of it
 
     const styleSheet = {
         backgroundColor: 'white',
@@ -38,7 +68,7 @@ const AddService = () => {
                             <div className="row">
                                 <div className="col-md-6">
                                     <b><big style={{marginLeft: "10px"}}>Service Title</big></b>
-                                    <input placeholder='Enter Title' type="text" className="input-field" {...register("name", { required: true })} />
+                                    <input placeholder='Enter Title' type="text" className="input-field" {...register("title", { required: true })} />
                                     {errors.phoneNumber && <span className="text-danger">This field is required</span>}
                                     <br />
 
@@ -54,11 +84,11 @@ const AddService = () => {
                                 </div>
                                 <div className="col-md-6">
                                    <b><big style={{marginLeft: "10px"}}>Image</big></b>
-                                    <input  className="input-field" type="file" />
+                                    <input onChange={handleChange}  className="input-field" type="file" />
                                 </div>
                                 <input className="input-field bg-primary ms-3 text-white" type="submit" />
                         </div>
-                        </form>
+                      </form>
                     </div>
                 </div>
             </div>

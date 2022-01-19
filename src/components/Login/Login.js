@@ -34,7 +34,7 @@ const Login = () => {
                 navigate(from);
 
 
-                fetch('http://localhost:5000/addUser', {
+                fetch('https://quiet-temple-98612.herokuapp.com/addUser', {
                     method: 'POST',
                     headers: { 'content-Type': 'application/json' },
                     body: JSON.stringify(signInUser)

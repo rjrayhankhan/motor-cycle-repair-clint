@@ -6,7 +6,7 @@ const ServesList = () => {
     const [ service, setService ] = useState([]);
 
     useEffect(() => {
-        const url = "http://localhost:5000/getService";
+        const url = "https://quiet-temple-98612.herokuapp.com/getService";
         fetch(url)
         .then(res => res.json())
         .then(data => setService(data))

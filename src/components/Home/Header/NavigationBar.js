@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../../images/logo.jpg';
 import { UserContext } from '../../../App';
@@ -7,7 +7,15 @@ import { UserContext } from '../../../App';
 const NavigationBar = () => {
     const { value2 } = useContext(UserContext);
     const [loggedInUser, setLoggedInUser] = value2; 
+    const [ admin, setAdmin ] = useState({});
     const token = sessionStorage.getItem("token");
+
+    if(loggedInUser.email){
+            const url = 'https://quiet-temple-98612.herokuapp.com/getAdmin';
+            fetch(url)
+            .then(res => res.json())
+            .then(data => setAdmin(data.email))
+    }
 
     return (
         <>
@@ -24,7 +32,9 @@ const NavigationBar = () => {
                             <Nav.Link href="/yourServes">YourServices</Nav.Link>
                             <Nav.Link href="/services">Services</Nav.Link>
                             <Nav.Link href="/contact">Contact</Nav.Link>
-                            <Nav.Link href="/admin">Admin</Nav.Link>
+                            {
+                                admin === loggedInUser.email ? <Nav.Link href="/admin">Admin</Nav.Link> : ''
+                            }
                             {
                                 loggedInUser.email || token
                                 ? <div><img style={{width: '50px', height: '50px', borderRadius:'50%', marginLeft: '10px'}} src={loggedInUser.image} alt="" /></div>

@@ -43,7 +43,7 @@ const Services = () => {
         setAllData(data);
         navigate('/yourServes');
 
-        fetch(`http://localhost:5000/getUser/`+ token)
+        fetch(`https://quiet-temple-98612.herokuapp.com/getUser/`+ token)
             .then(res => res.json())
             .then(userData => setAllData(userData[0]))
     }

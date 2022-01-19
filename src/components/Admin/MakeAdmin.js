@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 
 const MakeAdmin = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
 
-        fetch("http://localhost:5000/admin", {
+        fetch("https://quiet-temple-98612.herokuapp.com/admin", {
             method: "POST",
             headers: { "content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -14,13 +14,14 @@ const MakeAdmin = () => {
             .then(res => {
                 if (res) {
                     alert('Review created successfully.');
+                    window.location.reload(false);
                 }
                 else { alert('something is wrong please try agin.'); }
             })
     };
 
 
-    console.log(watch("example")); // watch input value by passing the name of it
+    // console.log(watch("example")); // watch input value by passing the name of it
 
     const styleSheet = {
         backgroundColor: 'white',
@@ -50,7 +51,7 @@ const MakeAdmin = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <b><big style={{ marginLeft: "10px" }}>Email</big></b>
                             <br></br>
-                            <input placeholder='Enter Admin Email' type="email" className="input-field" {...register("name", { required: true })} />
+                            <input placeholder='Enter Admin Email' type="email" className="input-field" {...register("email", { required: true })} />
                             {errors.phoneNumber && <span className="text-danger">This field is required</span>}
 
                             <input style={{ marginTop: "5px", marginLeft: "20px" }} className="btn btn-primary px-5 py-0 " type="submit" />
